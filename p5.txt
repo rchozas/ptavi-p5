@@ -45,16 +45,39 @@ cuestiones:
 
 ¿Por qué lo sabes?
     
-    Sabemos que se trata de una IP privada porque se encuentra dentro del rango de la clase C de redes privadas IPv4 (192.168.0.0 - 192.168.255.255).
+    Sabemos que se trata de una IP privada porque se encuentra dentro del rango
+     de la clase C de redes privadas IPv4 (192.168.0.0 - 192.168.255.255).
 
 
-3. Antes de analizar las tramas, mira las estadı́sticas generales que aparecen en el menú de Statistics. En el apartado de jerarquı́a de protocolos (Protocol Hierarchy) se puede ver el porcentaje del tráfico
-correspondiente al protocolo TCP y UDP.
+3. Antes de analizar las tramas, mira las estadı́sticas generales que aparecen 
+en el menú de Statistics. En el apartado de jerarquı́a de protocolos 
+(Protocol Hierarchy) se puede ver el porcentaje del tráfico correspondiente al
+ protocolo TCP y UDP.
 
 * ¿Cuál de los dos es mayor? ¿Tiene esto sentido si estamos hablando
 de una aplicación que transmite en tiempo real?
 
+    - El porcentaje de trafico es mucho mayor en el protocolo UDP que en TCP.
+        UDP tiene un porcentaje de paquetes del 96.2.
+        TCP tiene un porcentaje de paquetes del 2.1.
+        
+    - Si que tiene sentido si hablamos de una aplicacion que transmite en 
+    tiempo real, ya que TCP aporta fiabilidad y por ello no es bueno
+    para este tipo de aplicaciones. 
+    
 * ¿Qué otros protocolos podemos ver en la jerarquı́a de protocolos?
+
+    Aparte de TCP y UDP, podemos ver otros protocolos como: 
+        - IP (Internet Protocol Version 4)
+        - DNS (Domain Name Service)
+        - STUN (Simple Traversal of UDP Through NAT)
+        - SIP (Session Initiation Protocol)
+        - RTP (Real-Time Transport Control Protocol)
+        - H.261
+        - RTCP (Real-time Transport Control Protocol)
+        - HTTP (Hypertext Transfer Protocol)
+        - ICMP (Internet Control Message Protocol)
+        - ARP (Address Resolution Protocol)
 ¿Cuales crees que son señal y cuales ruido?
 
 4. Observa por encima el flujo de tramas en el menú de Statistics en IO
@@ -63,9 +86,14 @@ Graphs. La captura que estamos viendo incluye desde la inicialización
 
 * Filtra por sip para conocer cuándo se envı́an paquetes SIP. ¿En
 qué segundos tienen lugar esos envı́os?
+    Los envios de paquetes SIP tienen lugar en los segundos: 
+    7.343770, 7.425202, 7.427990, 7.512211, 7.567714, 7.648107, 14.426793, 
+    14.599871, 14.610573, 16.233522. 16.334756, 16.343704, 16.460741, 
+    38.119195, 8.362649, 8.362673, 38.937875, 39.154151, 39.178064, 39.204022,
+    39.229683, 55.694378, 55.774638, 55.776662, 55.859934
 
 * Y los paquetes con RTP, ¿cuándo se envı́an?
-
+ Los paquetes RTP se envian entre los segundos 17.169770 y 38.119177.
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 5. Analiza las dos primeras tramas de la captura.
@@ -97,7 +125,8 @@ protocolo STUN.
 
 * ¿Podrı́as decir si estamos tras un NAT o no?
 
-8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección IP de la otra parte al
+8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, 
+lo habitual es desconocer la dirección IP de la otra parte al
 realizar una llamada. Por eso, todo usuario registra su localización en
 un servidor Registrar. El Registrar guarda información sobre los
 usuarios en un servidor de localización que puede ser utilizado para
@@ -105,8 +134,7 @@ localizar usuarios.
 
 * ¿Qué dirección IP tiene el servidor Registrar?
 
-* ¿A qué puerto (del servidor Registrar) se envı́an los paquetes
-SIP?
+* ¿A qué puerto (del servidor Registrar) se envı́an los paquetes SIP?
 
 * ¿Qué método SIP utiliza el UA para registrarse?
 
@@ -120,9 +148,8 @@ SIP?
 
 * ¿Cómo sabemos si el registro se ha realizado correctamente o no?
 
-* ¿Podrı́as identificar las diferencias entre el primer intento y el
-segundo de registro? (fı́jate en el tamaño de los paquetes y mira
-a qué se debe el cambio)
+* ¿Podrı́as identificar las diferencias entre el primer intento y el segundo de
+ registro? (fı́jate en el tamaño de los paquetes y mira a qué se debe el cambio)
 
 * ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica
 las unidades.
@@ -130,59 +157,85 @@ las unidades.
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar
 con el servicio de eco de Ekiga que nos permite comprobar si nos
 hemos conectado correctamente. El servicio de eco tiene la dirección
-sip:500@ekiga.net. Veamos el INVITE de cerca.
+sip:500@ekiga.net. Veamos el INVITE de cerca. 
+
 * ¿Puede verse el nombre del que efectúa la llamada, ası́ como su
 dirección SIP?
+
 * ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
+
 * ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+
 * ¿En qué se diferencia el segundo INVITE más abajo del primero?
 ¿A qué crees que se debe esto?
 
 11. Una vez conectado, estudia el intercambio de tramas.
 * ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
+
 * ¿Cuál es el tamaño de paquete de los mismos?
+
 * ¿Se utilizan bits de padding?
-* ¿Cuál es la periodicidad de los paquetes (en origen; nota que la
-captura es en destino)?
+
+* ¿Cuál es la periodicidad de los paquetes (en origen; nota que la captura 
+es en destino)?
 * ¿Cuántos bits/segundo se envı́an?
+
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una
 opción RTP. Empecemos mirando los flujos RTP.
+
 * ¿Cuántos flujos hay? ¿por qué?
+
 * ¿Cuántos paquetes se pierden?
+
 * ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el
 valor de delta?
+
 * ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué
 quiere decir eso? ¿Crees que estamos ante una conversación de
 calidad?
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony
 -> RTP -> Stream Analysis.
+
 * ¿Cuánto valen el delta y el jitter para el primer paquete que
 ha llegado?
+
 * ¿Podemos saber si éste es el primer paquete que nos han enviado?
+
 * Los valores de jitter son menores de 10ms hasta un paquete
 dado. ¿Cuál?
+
 * ¿A qué se debe el cambio tan brusco del jitter?
+
 * ¿Es comparable el cambio en el valor de jitter con el del delta?
 ¿Cual es más grande?
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la
 llamada de voz IP capturada en una ventana emergente. Selecciona
 esa llamada y pulsa el botón Graph.
+
 * ¿Cuánto dura la conversación?
+
 * ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
 
 15. Identifica la trama donde se finaliza la conversación.
+
 * ¿Qué método SIP se utiliza?
+
 * ¿En qué trama(s)?
+
 * ¿Por qué crees que se envı́a varias veces?
 
 16. Finalmente, se cierra la aplicación de VozIP.
+
 * ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+
 * ¿En qué trama sucede esto?
+
 * ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 Captura de una sesión SIP
@@ -199,18 +252,25 @@ Ekiga para ver todo el proceso3 .
 
 19. Observa las diferencias en el inicio de la conversación entre el entorno
 del laboratorio y el del ejercicio anterior4 :
+
 * ¿Se utilizan DNS y STUN? ¿Por qué?
+
 * ¿Son diferentes el registro y la descripción de la sesión?
 
 20. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
 * ¿Cuántos flujos tenemos?
+
 * ¿Cuál es su periodicidad?
+
 * ¿Cuánto es el valor máximo del delta y los valores medios y
 máximo del jitter?
+
 * ¿Podrı́as reproducir la conversación desde Wireshark? ¿Cómo?
 Comprueba que poniendo un valor demasiado pequeño para el
 buffer de jitter, la conversación puede no tener la calidad necesaria.
+
 * ¿Sabrı́as decir qué tipo de servicio ofrece sip:500@ekiga.net?
+
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 
