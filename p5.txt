@@ -270,16 +270,34 @@ es en destino)?
 opción RTP. Empecemos mirando los flujos RTP.
 
 * ¿Cuántos flujos hay? ¿por qué?
-
+    Hay dos flujos, porque uno es para el audio y otro para el video.
+    - Payload g711A (para el audio)
+    - Payload h261 (para el video)
+    
 * ¿Cuántos paquetes se pierden?
-
+    No se pierde ningun paquete. 
+    Lost 0 (0.0%)
+    
 * ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el
 valor de delta?
-
+    El valor maximo del delta es:
+    - 1290.444 ms (audio)
+    - 1290.479 ms (video)
+    
+    El valor de delta es el tiempo que pasa entre un paquete y el siguiente.
+    
 * ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué
 quiere decir eso? ¿Crees que estamos ante una conversación de
 calidad?
-
+    Max Jitter (ms):
+        -Src port 5010: 119.635
+        -Src port 5014: 183.096
+        
+        
+    Mean Jitter (ms):
+        -Src port 5010: 42.500
+        -Src port 5014: 153.240
+ 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony
 -> RTP -> Stream Analysis.
 
