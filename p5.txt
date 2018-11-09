@@ -342,19 +342,31 @@ esa llamada y pulsa el botón Graph.
 15. Identifica la trama donde se finaliza la conversación.
 
 * ¿Qué método SIP se utiliza?
-
+    Se utiliza el metodo BYE
+    
 * ¿En qué trama(s)?
-
+    El metodo BYE se envia en las tramas: 924, 925, 927, 933  
+    
 * ¿Por qué crees que se envı́a varias veces?
+    Se envia varias veces porque el servidor no envia el 200OK.
+    Como RTP emplea UDP y este se trata de un protocolo no fiable. Las tramas se
+    envian varias veces para asegurarse de que llega el mensaje al otro extremo, 
+    es decir, se emplea la retransmisión para mantener fiabilidad.
 
 16. Finalmente, se cierra la aplicación de VozIP.
 
 * ¿Por qué aparece una instrucción SIP del tipo REGISTER?
-
+    Aparece una instruccion SIP del tipo REGISTER al final poque el usuario quiere darse de baja, 
+    esto lo vemos porque envia el campo expires a 0. 
+    
 * ¿En qué trama sucede esto?
-
+    En la 950 y 952
+    
 * ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
-
+    La diferencia viene marcada por el campo expires. 
+    Al principio, en las tramas 46 y 51 el campo expires es de 3600 segundos
+    mientras que en las tramas 950 y 952 este campo viene con un valor de 0 segundos.
+    
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 Captura de una sesión SIP
