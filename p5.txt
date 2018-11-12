@@ -385,23 +385,36 @@ Ekiga para ver todo el proceso3 .
 del laboratorio y el del ejercicio anterior4 :
 
 * ¿Se utilizan DNS y STUN? ¿Por qué?
+     No es necesario el uso de DNS y STUN puesto que estamos usando una IP pública
 
 * ¿Son diferentes el registro y la descripción de la sesión?
-
+    Si son diferentes
 20. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
 * ¿Cuántos flujos tenemos?
-
+    tenemos dos flujos 
+    
 * ¿Cuál es su periodicidad?
 
 * ¿Cuánto es el valor máximo del delta y los valores medios y
 máximo del jitter?
+    FLUJO 1:
+    -Max Delta: 30.520ms
+    -Max Jitter: 9.365ms
+    -Mean Jitter: 4.941ms
 
+    FLUJO 2: 
+    -Max Delta: 33.241ms
+    -Max Jitter: 0.522ms
+    -Mean Jitter: 0.035ms
+    
 * ¿Podrı́as reproducir la conversación desde Wireshark? ¿Cómo?
 Comprueba que poniendo un valor demasiado pequeño para el
 buffer de jitter, la conversación puede no tener la calidad necesaria.
-
-* ¿Sabrı́as decir qué tipo de servicio ofrece sip:500@ekiga.net?
-
+     Se puede reproducir desde Wireshark:
+        Telephony/VoIP Calls/Play Streams
+ 
+* ¿Sabrı́as decir qué tipo de servicio ofrece sip:music@iptel.org?
+    Ofrece un servicio de musica
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 
